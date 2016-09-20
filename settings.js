@@ -101,7 +101,7 @@ webpackJsonp([1,3],[
 	    netflixMode: false,
 	    // whether stages affecting infrastructure (like "Create Load Balancer") should be enabled or not
 	    infrastructureStages: process.env.INFRA_STAGES === 'enabled',
-	    jobs: true,
+	    jobs: false,
 	    serialization: false
 	  }
 	};
