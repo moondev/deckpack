@@ -4,15 +4,17 @@ webpackJsonp([1,3],[
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var feedbackUrl = process.env.FEEDBACK_URL || 'https://hootch.test.netflix.net/submit';
+	var feedbackUrl = '/feedback';
 	var gateHost = '/gate';
-	var bakeryDetailUrl = '/bakery' + '/api/v1/global/logs/{{context.status.id}}?html=true'
-	var authEndpoint = process.env.AUTH_ENDPOINT || 'https://spinnaker-api-prestaging.mgmttest.netflix.net/auth/user';
+	var bakeryHost = '/bakery';
+	var bakeryDetailUrl = bakeryHost + '/api/v1/global/logs/{{context.status.id}}?html=true';
+	var authEndpoint = process.env.AUTH_ENDPOINT || gateHost + '/auth/user';
 	var authEnabled = false;
+	var netflixMode = false;
 
 	window.spinnakerSettings = {
 	  checkForUpdates: true,
-	  defaultProviders: ['aws', 'gce', 'azure','docker', 'cf', 'kubernetes', 'titus', 'openstack'],
+	  defaultProviders: ['aws', 'gce', 'azure', 'cf', 'kubernetes', 'titus', 'openstack'],
 	  feedbackUrl: feedbackUrl,
 	  gateUrl: gateHost,
 	  bakeryDetailUrl: bakeryDetailUrl,
@@ -31,7 +33,8 @@ webpackJsonp([1,3],[
 	    aws: {
 	      defaults: {
 	        account: 'test',
-	        region: 'us-east-1'
+	        region: 'us-east-1',
+	        iamRole: 'BaseIAMRole'
 	      },
 	      defaultSecurityGroups: [],
 	      loadBalancers: {
@@ -87,7 +90,7 @@ webpackJsonp([1,3],[
 	      botName: 'spinnakerbot'
 	    }
 	  },
-	  authEnabled: authEnabled,
+	  authEnabled: false,
 	  authTtl: 600000,
 	  gitSources: ['stash', 'github'],
 	  triggerTypes: ['git', 'pipeline', 'docker', 'cron', 'jenkins'],
@@ -96,17 +99,17 @@ webpackJsonp([1,3],[
 	    notifications: true,
 	    fastProperty: true,
 	    vpcMigrator: true,
-	    clusterDiff: true,
+	    clusterDiff: false,
 	    roscoMode: true,
 	    netflixMode: false,
-      dockerBake: true,
 	    // whether stages affecting infrastructure (like "Create Load Balancer") should be enabled or not
 	    infrastructureStages: process.env.INFRA_STAGES === 'enabled',
-	    jobs: true,
-	    serialization: false
+	    jobs: false,
+	    snapshots: false,
+	    dockerBake: true
 	  }
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(287)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188)))
 
 /***/ }
 ]);
