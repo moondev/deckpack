@@ -99,6 +99,7 @@ webpackJsonp([1,3],[
 	    clusterDiff: true,
 	    roscoMode: true,
 	    netflixMode: false,
+      dockerBake: true,
 	    // whether stages affecting infrastructure (like "Create Load Balancer") should be enabled or not
 	    infrastructureStages: process.env.INFRA_STAGES === 'enabled',
 	    jobs: true,
