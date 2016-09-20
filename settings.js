@@ -12,7 +12,7 @@ webpackJsonp([1,3],[
 
 	window.spinnakerSettings = {
 	  checkForUpdates: true,
-	  defaultProviders: ['aws', 'gce', 'azure', 'cf', 'kubernetes', 'titus', 'openstack'],
+	  defaultProviders: ['aws', 'gce', 'azure','docker', 'cf', 'kubernetes', 'titus', 'openstack'],
 	  feedbackUrl: feedbackUrl,
 	  gateUrl: gateHost,
 	  bakeryDetailUrl: bakeryDetailUrl,
@@ -101,7 +101,7 @@ webpackJsonp([1,3],[
 	    netflixMode: false,
 	    // whether stages affecting infrastructure (like "Create Load Balancer") should be enabled or not
 	    infrastructureStages: process.env.INFRA_STAGES === 'enabled',
-	    jobs: false,
+	    jobs: true,
 	    serialization: false
 	  }
 	};
