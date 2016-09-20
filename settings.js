@@ -93,15 +93,15 @@ webpackJsonp([1,3],[
 	  triggerTypes: ['git', 'pipeline', 'docker', 'cron', 'jenkins'],
 	  feature: {
 	    pipelines: true,
-	    notifications: false,
+	    notifications: true,
 	    fastProperty: true,
 	    vpcMigrator: true,
 	    clusterDiff: true,
-	    roscoMode: false,
+	    roscoMode: true,
 	    netflixMode: false,
 	    // whether stages affecting infrastructure (like "Create Load Balancer") should be enabled or not
 	    infrastructureStages: process.env.INFRA_STAGES === 'enabled',
-	    jobs: false,
+	    jobs: true,
 	    serialization: false
 	  }
 	};
