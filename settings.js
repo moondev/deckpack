@@ -5,16 +5,17 @@ webpackJsonp([1,3],[
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	var feedbackUrl = process.env.FEEDBACK_URL || 'https://hootch.test.netflix.net/submit';
-	var gateHost = process.env.API_HOST || 'https://spinnaker-api-prestaging.mgmttest.netflix.net';
-	var bakeryDetailUrl = process.env.BAKERY_DETAIL_URL || 'http://bakery.test.netflix.net/#/?region={{context.region}}&package={{context.package}}&detail=bake:{{context.status.resourceId}}';
+	var gateHost = '/gate';
+	var bakeryDetailUrl = '/bakery' + '/api/v1/global/logs/{{context.status.id}}?html=true'
 	var authEndpoint = process.env.AUTH_ENDPOINT || 'https://spinnaker-api-prestaging.mgmttest.netflix.net/auth/user';
+	var authEnabled = false;
 
 	window.spinnakerSettings = {
 	  checkForUpdates: true,
 	  defaultProviders: ['aws', 'gce', 'azure', 'cf', 'kubernetes', 'titus', 'openstack'],
 	  feedbackUrl: feedbackUrl,
-	  gateUrl: '/gate',
-	  bakeryDetailUrl: '/bakery',
+	  gateUrl: gateHost,
+	  bakeryDetailUrl: bakeryDetailUrl,
 	  authEndpoint: authEndpoint,
 	  pollSchedule: 30000,
 	  defaultTimeZone: process.env.TIMEZONE || 'America/Los_Angeles', // see http://momentjs.com/timezone/docs/#/data-utilities/
@@ -86,7 +87,7 @@ webpackJsonp([1,3],[
 	      botName: 'spinnakerbot'
 	    }
 	  },
-	  authEnabled: false,
+	  authEnabled: authEnabled,
 	  authTtl: 600000,
 	  gitSources: ['stash', 'github'],
 	  triggerTypes: ['git', 'pipeline', 'docker', 'cron', 'jenkins'],
@@ -100,10 +101,11 @@ webpackJsonp([1,3],[
 	    netflixMode: false,
 	    // whether stages affecting infrastructure (like "Create Load Balancer") should be enabled or not
 	    infrastructureStages: process.env.INFRA_STAGES === 'enabled',
-	    jobs: false
+	    jobs: false,
+	    serialization: false
 	  }
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(314)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(287)))
 
 /***/ }
 ]);
