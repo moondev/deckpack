@@ -4,13 +4,15 @@ webpackJsonp([1,3],[
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var feedbackUrl = '/feedback';
+	var feedbackUrl = process.env.FEEDBACK_URL;
 	var gateHost = '/api/v1/proxy/namespaces/spinnaker/services/spin-deck/gate';
 	var bakeryHost = '/api/v1/proxy/namespaces/spinnaker/services/spin-deck/bakery';
 	var bakeryDetailUrl = bakeryHost + '/api/v1/global/logs/{{context.status.id}}?html=true';
 	var authEndpoint = process.env.AUTH_ENDPOINT || gateHost + '/auth/user';
 	var authEnabled = false;
 	var netflixMode = false;
+	var chaosEnabled = false;
+	var fiatEnabled = false;
 
 	window.spinnakerSettings = {
 	  checkForUpdates: false,
@@ -90,26 +92,27 @@ webpackJsonp([1,3],[
 	      botName: 'spinnakerbot'
 	    }
 	  },
-	  authEnabled: false,
+	  authEnabled: authEnabled,
 	  authTtl: 600000,
 	  gitSources: ['stash', 'github'],
 	  triggerTypes: ['git', 'pipeline', 'docker', 'cron', 'jenkins'],
 	  feature: {
 	    pipelines: true,
-	    notifications: true,
-	    fastProperty: false,
+	    notifications: false,
+	    fastProperty: true,
 	    vpcMigrator: true,
 	    clusterDiff: false,
 	    roscoMode: true,
-	    netflixMode: false,
+	    netflixMode: netflixMode,
+	    chaosMonkey: chaosEnabled,
 	    // whether stages affecting infrastructure (like "Create Load Balancer") should be enabled or not
 	    infrastructureStages: process.env.INFRA_STAGES === 'enabled',
-	    jobs: false,
-	    snapshots: false,
-	    dockerBake: true
+	    jobs: true,
+            dockerBake: true,
+	    snapshots: false
 	  }
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(333)))
 
 /***/ }
 ]);
