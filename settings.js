@@ -4,13 +4,15 @@ webpackJsonp([1,3],[
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var feedbackUrl = '/feedback';
-	var gateHost = '/gate';
-	var bakeryHost = '/bakery';
-	var bakeryDetailUrl = bakeryHost + '/api/v1/global/logs/{{context.status.id}}?html=true';
+	var feedbackUrl = process.env.FEEDBACK_URL;
+	var gateHost = process.env.API_HOST || 'http://localhost:8084';
+	var bakeryHost = process.env.BAKERY_HOST || 'http://localhost:8087';
+	var bakeryDetailUrl = process.env.BAKERY_DETAIL_URL || bakeryHost + '/#/?region={{context.region}}&package={{context.package}}&detail=bake:{{context.status.resourceId}}';
 	var authEndpoint = process.env.AUTH_ENDPOINT || gateHost + '/auth/user';
-	var authEnabled = false;
-	var netflixMode = false;
+	var authEnabled = process.env.AUTH_ENABLED === 'false' ? false : true;
+	var netflixMode = process.env.NETFLIX_MODE === 'true' ? true : false;
+	var chaosEnabled = netflixMode || process.env.CHAOS_ENABLED === 'true' ? true : false;
+	var fiatEnabled = process.env.FIAT_ENABLED === 'true' ? true : false;
 
 	window.spinnakerSettings = {
 	  checkForUpdates: true,
@@ -90,26 +92,26 @@ webpackJsonp([1,3],[
 	      botName: 'spinnakerbot'
 	    }
 	  },
-	  authEnabled: false,
+	  authEnabled: authEnabled,
 	  authTtl: 600000,
 	  gitSources: ['stash', 'github'],
 	  triggerTypes: ['git', 'pipeline', 'docker', 'cron', 'jenkins'],
 	  feature: {
 	    pipelines: true,
-	    notifications: true,
+	    notifications: false,
 	    fastProperty: true,
 	    vpcMigrator: true,
 	    clusterDiff: false,
-	    roscoMode: true,
-	    netflixMode: false,
+	    roscoMode: false,
+	    netflixMode: netflixMode,
+	    chaosMonkey: chaosEnabled,
 	    // whether stages affecting infrastructure (like "Create Load Balancer") should be enabled or not
 	    infrastructureStages: process.env.INFRA_STAGES === 'enabled',
 	    jobs: false,
-	    snapshots: false,
-	    dockerBake: true
+	    snapshots: false
 	  }
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(333)))
 
 /***/ }
 ]);
