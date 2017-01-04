@@ -98,23 +98,23 @@ webpackJsonp([1,3],[
 	      botName: 'spinnakerbot'
 	    }
 	  },
-	  authEnabled: authEnabled,
+	  authEnabled: false,
 	  authTtl: 600000,
 	  gitSources: ['stash', 'github'],
 	  triggerTypes: ['git', 'pipeline', 'docker', 'cron', 'jenkins'],
 	  feature: {
-	    fiatEnabled: fiatEnabled,
+	    fiatEnabled: false,
 	    pipelines: true,
-	    notifications: false,
+	    notifications: true,
 	    fastProperty: true,
 	    vpcMigrator: true,
 	    clusterDiff: false,
-	    roscoMode: false,
-	    netflixMode: netflixMode,
+	    roscoMode: true,
+	    netflixMode: false,
 	    chaosMonkey: chaosEnabled,
 	    // whether stages affecting infrastructure (like "Create Load Balancer") should be enabled or not
 	    infrastructureStages: process.env.INFRA_STAGES === 'enabled',
-	    jobs: false,
+	    jobs: true,
 	    snapshots: false
 	  }
 	};
