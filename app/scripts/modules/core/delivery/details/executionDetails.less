@@ -1,0 +1,128 @@
+@import "../../presentation/less/imports/commonImports.less";
+
+execution {
+  .execution-details {
+    background-color: #ffffff;
+    padding: 0 10px 0 15px;
+    margin: 0 -5px;
+
+    th {
+      font-weight: 600;
+    }
+
+    .nav {
+      background-color: transparent;
+      border: 0;
+      padding-left: 0;
+      width: auto;
+      margin-left: -15px;
+      a {
+        margin: 10px 0 0;
+        border-radius: 0;
+        padding: 5px 15px;
+        border-bottom-width: 0;
+        font-weight: 600;
+        color: @text-color;
+        background-color: @mid_light_grey;
+        &:hover {
+          background-color: @mid_lighter_grey;
+          transition: background-color 0.15s;
+        }
+        &.active {
+          background-color: @lightest_grey;
+        }
+      }
+    }
+
+    .step-section-details {
+      background-color: @lightest_grey;
+      padding: 15px;
+    }
+
+    .execution-details-summary {
+      h6.duration {
+        margin-top: 0;
+      }
+    }
+    .execution-details-title {
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0;
+      padding-bottom: 5px;
+      .btn-group {
+        margin-left: 20px;
+        text-transform: none;
+      }
+    }
+
+    tbody {
+      tr.stage-summary {
+        font-weight: 600;
+      }
+      tr {
+        font-size: 85%;
+      }
+      tr.clickable {
+        cursor: pointer;
+        &:hover {
+          background-color: @table-bg-hover;
+        }
+      }
+    }
+    .glyphicon-remove {
+      cursor: pointer;
+      color: @mid_grey;
+    }
+    h5 {
+      font-weight: 600;
+      padding-bottom: 10px;
+    }
+    .stage-name {
+      margin-top: 5px;
+    }
+    .well {
+      margin-top: 10px;
+    }
+  }
+
+  .stage-details {
+    .stage-details-heading {
+      text-transform: uppercase;
+      margin-top: 0;
+      h4 {
+        font-weight: 600;
+      }
+    }
+    .stage-details-section-heading {
+      border-bottom: 1px solid @dark_blue_background;
+      margin-bottom: 5px;
+      h4 {
+        font-weight: 600;
+      }
+    }
+    h4 {
+      margin-top: 0;
+    }
+  }
+
+  .subinput-note {
+    font-style: italic;
+    font-size: 11px;
+    color: @mid_grey;
+  }
+
+  .hide-details-link {
+    display: block;
+    text-align: right;
+    padding-top: 5px;
+    color: @text-color;
+    text-transform: none;
+    font-size: 90%;
+    .glyphicon {
+      top: 2px;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
