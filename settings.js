@@ -5,8 +5,8 @@ webpackJsonp([1,3],[
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	var feedbackUrl = process.env.FEEDBACK_URL;
-	var gateHost = process.env.API_HOST || 'http://localhost:8084';
-	var bakeryHost = process.env.BAKERY_HOST || 'http://localhost:8087';
+	var gateHost = process.env.API_HOST || '/gate';
+	var bakeryHost = process.env.BAKERY_HOST || '/rosco';
 	var bakeryDetailUrl = process.env.BAKERY_DETAIL_URL || bakeryHost + '/#/?region={{context.region}}&package={{context.package}}&detail=bake:{{context.status.resourceId}}';
 	var authEndpoint = process.env.AUTH_ENDPOINT || gateHost + '/auth/user';
 	var authEnabled = process.env.AUTH_ENABLED === 'false' ? false : true;
